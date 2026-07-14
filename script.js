@@ -1,11 +1,1 @@
-console.log("Piu MakeOver website loaded successfully");
-
-document.querySelectorAll('a[href^="#"]').forEach(function(link){
-  link.addEventListener("click", function(event){
-    var target = document.querySelector(this.getAttribute("href"));
-    if(target){
-      event.preventDefault();
-      target.scrollIntoView({behavior:"smooth"});
-    }
-  });
-});
+const menuBtn=document.getElementById('menuBtn'),navLinks=document.getElementById('navLinks');menuBtn.onclick=()=>navLinks.classList.toggle('open');document.querySelectorAll('.filter').forEach(btn=>btn.onclick=()=>{document.querySelectorAll('.filter').forEach(b=>b.classList.remove('active'));btn.classList.add('active');const f=btn.dataset.filter;document.querySelectorAll('.gallery-item').forEach(i=>i.classList.toggle('hide',f!=='all'&&!i.classList.contains(f)));});const lightbox=document.getElementById('lightbox'),lightboxImage=document.getElementById('lightboxImage');document.querySelectorAll('.gallery-item img').forEach(img=>img.onclick=()=>{lightboxImage.src=img.src;lightbox.classList.add('open')});document.getElementById('closeLightbox').onclick=()=>lightbox.classList.remove('open');lightbox.onclick=e=>{if(e.target===lightbox)lightbox.classList.remove('open')};document.getElementById('bookingForm').onsubmit=e=>{e.preventDefault();const n=document.getElementById('name').value,p=document.getElementById('phone').value,s=document.getElementById('service').value,d=document.getElementById('date').value,t=document.getElementById('note').value;const m=`Hello Piu MakeOver,%0AName: ${encodeURIComponent(n)}%0APhone: ${encodeURIComponent(p)}%0AService: ${encodeURIComponent(s)}%0ADate: ${encodeURIComponent(d)}%0ANote: ${encodeURIComponent(t||'None')}`;window.open(`https://wa.me/918334859080?text=${m}`,'_blank')};
